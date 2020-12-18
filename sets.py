@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import re, os
 
 DEBUG = bool(os.getenv("DEBUG"))
@@ -9,7 +10,7 @@ def read_file_as_set(path) -> set:
 s = read_file_as_set
 
 
-if __name__ == '__main__':
+def main():
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('expression', help="expression of operations over files which contains set of lines. e.g. 'names_boy & names_girl'")
@@ -27,3 +28,6 @@ if __name__ == '__main__':
         print('\n'.join(sorted(result)))
     else:
         print('\n'.join(result))
+
+if __name__ == '__main__':
+    main()
