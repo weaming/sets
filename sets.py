@@ -18,7 +18,7 @@ def main():
     args = parser.parse_args()
 
     exp = args.expression + ' '
-    exp2 = re.sub(r'([a-zA-Z0-9/-_.]+) ', r's("\1") ', exp)
+    exp2 = re.sub(r'([a-zA-Z0-9/\_.]+(-[a-zA-Z0-9/\_.]+)*) ', r's("\1") ', exp)
     if DEBUG:
         print("expression:", exp2)
     result = eval(exp2)
