@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-import re, os
+import re, os, sys
+
+from signal import signal, SIGPIPE, SIG_DFL
+signal(SIGPIPE, SIG_DFL)
 
 DEBUG = bool(os.getenv("DEBUG"))
 
@@ -25,9 +28,11 @@ def main():
     if DEBUG:
         print("result:", result)
     if args.sort:
-        print('\n'.join(sorted(result)))
+        order = sorted
     else:
-        print('\n'.join(result))
+        order = lambda x: x
+    for x in order(result):
+        sys.stdout.write(x+'\n')
 
 if __name__ == '__main__':
     main()
